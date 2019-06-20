@@ -34,3 +34,4 @@ class Exercise(models.Model):
         return self.name
 
 
+
