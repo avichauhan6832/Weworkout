@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>WeWorkout Home</h1>
+  <h2>Dynamic content</h2>
+  <p>The site has the following contents:</p>
+  <ul>
+    <li><strong>Workouts</strong> {{ num_of_workouts }}</li>
+    <li><strong>Exercise</strong> {{ num_of_exercise }}</li>
+  </ul>
+{% endblock %}
