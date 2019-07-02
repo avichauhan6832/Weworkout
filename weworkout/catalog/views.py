@@ -12,3 +12,10 @@ def index(request):
     }
     
     return render(request, 'index.html', context=context)
+
+def allworkouts(request):
+    return render(request,'allworkouts.html')
+
+def allexercises(request):
+    return render(request,'allexercises.html')
+   
