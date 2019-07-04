@@ -22,3 +22,4 @@ class WorkoutListView(generic.ListView):
 
 class WorkoutDetailView(generic.DetailView):
     model = Workout
+
