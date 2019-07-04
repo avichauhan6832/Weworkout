@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title : {{ workout.title }}</h1>
+
+
+  <p><strong>User : </strong>{{ workout.user }}</p>
+  <p><strong>Sets : </strong>{{ workout.sets }}</p>
+  <p><strong>Note : </strong>{{ workout.notes }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Exercises</h4>
+    {% for exercise in workout.exercise.all %}
+        <p>{{ exercise }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

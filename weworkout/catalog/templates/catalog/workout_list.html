@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Workout List</h1>
+  {% if workout_list %}
+  <ul>
+    {% for workout in workout_list %}
+      <li>
+        <a href="{{ workout.get_absolute_url }}">{{ workout.title }}</a> 
+        <ul><strong>Workout User : </strong>{{ workout.user }}</ul>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}       
+{% endblock %}

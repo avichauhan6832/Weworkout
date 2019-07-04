@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -23,12 +24,18 @@ class Workout(models.Model):
     exercise = models.ManyToManyField('Exercise', related_name='wrokout_exercise')
     upvotes = models.ManyToManyField(Userprofile,related_name='upvotes')
 
+    def get_absolute_url(self):
+        return reverse('workout-detail', args=[str(self.id)])
+
     def __str__(self):
         return self.title
 
 class Exercise(models.Model):
     name = models.TextField(max_length=50)
     description = models.TextField(max_length=200, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('exercise-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
