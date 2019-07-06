@@ -1,12 +1,33 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>WeWorkout Home</h1>
-  <h2>Dynamic content</h2>
-  <p>The site has the following contents:</p>
-  <ul>
-    <li><strong>Workouts</strong> {{ nu_wo }}</li>
-    <li><strong>Exercise</strong> {{ nu_ex }}</li>
-    <li><strong>Users</strong> {{ nu_user }}</li>
-  </ul>
+  {% if user.is_authenticated %}
+    {% for workout in workout_list.all %}
+
+      <div class="card" style="width:18rem; margin:10px">
+        <img class="card-img-top" src="../static/images/demo.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Title : {{ workout.title }}</h5>
+          <p class="card-text"><strong>Note : </strong>{{ workout.sets }}</p>
+          <p class="card-text"><strong>Note : </strong>{{ workout.notes }}</p>
+          <ul class="list-group list-group-flush">
+            {% for exercise in workout.exercise.all %}
+              <li class="list-group-item"><a href="{{ exercise.get_absolute_url }}">{{ exercise.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  {% else %}
+    <h1>WeWorkout Home</h1>
+    <h2>Dynamic content</h2>
+    <p>The site has the following contents:</p>
+    <ul>
+      <li><strong>Workouts</strong> {{ nu_wo }}</li>
+      <li><strong>Exercise</strong> {{ nu_ex }}</li>
+      <li><strong>Users</strong> {{ nu_user }}</li>
+    </ul>
+  {% endif %} 
 {% endblock %}

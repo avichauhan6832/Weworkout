@@ -11,7 +11,7 @@
   <div style="margin-left:20px;margin-top:20px">
     <h4>Exercises</h4>
     {% for exercise in workout.exercise.all %}
-        <p>{{ exercise }}</p>
+        <p><a href="{{ exercise.get_absolute_url }}">{{ exercise.name }}</a> </p>
     {% endfor %}
   </div>
 {% endblock %}
