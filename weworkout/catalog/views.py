@@ -19,7 +19,16 @@ from django.views import generic
 
 class WorkoutListView(generic.ListView):
     model = Workout
+    paginate_by = 10
 
 class WorkoutDetailView(generic.DetailView):
     model = Workout
+
+class ExerciseListView(generic.ListView):
+    model = Exercise
+    paginate_by = 10
+
+class ExerciseDetailView(generic.DetailView):
+    model = Exercise
+    
 
