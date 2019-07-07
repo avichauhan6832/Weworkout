@@ -8,9 +8,9 @@ from django.contrib.auth.models import User
 class Userprofile(models.Model):
     """Model representing a User profile"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    about = models.TextField(max_length=500, blank=True)
-    followers = models.ManyToManyField(User, related_name='followers')
-    following = models.ManyToManyField(User, related_name='following')
+    about = models.TextField(max_length=500, null=True)
+    followers = models.ManyToManyField(User, related_name='followers', blank=True)
+    following = models.ManyToManyField(User, related_name='following', blank=True)
     workout = models.ManyToManyField('Workout', related_name='user_workout', blank=True)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Workout(models.Model):
     notes = models.TextField(max_length=500, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     exercise = models.ManyToManyField('Exercise', related_name='wrokout_exercise')
-    upvotes = models.ManyToManyField(Userprofile,related_name='upvotes')
+    upvotes = models.ManyToManyField(Userprofile,related_name='upvotes', blank=True)
 
     def get_absolute_url(self):
         return reverse('workout-detail', args=[str(self.id)])
